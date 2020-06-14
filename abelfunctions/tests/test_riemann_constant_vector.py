@@ -42,7 +42,9 @@ class TestRCVTheta(AbelfunctionsTestCase):
 
     def test_theta_X11(self):
         P0 = self.X11.base_place
+        print('P0', P0)
         W0 = RiemannConstantVector(P0)
+        print('W0', W0)
         self.is_theta_zero(self.X11,W0)
 
         P_oo = self.X11('oo')[0]
@@ -57,6 +59,7 @@ class TestRCVTheta(AbelfunctionsTestCase):
         W_D_oo = AbelMap(P0,D) - D.degree*AbelMap(P_oo) + \
                  RiemannConstantVector(P_oo)
         self.is_theta_zero(self.X11,W_D_oo)
+        assert False
 
 class TestRCVCanonical(AbelfunctionsTestCase):
     r"""Tests if the following theorem is satisfied:
