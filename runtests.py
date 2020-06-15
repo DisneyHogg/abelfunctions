@@ -66,6 +66,7 @@ def runtests(argv):
 
     # highlight the runtimes for the 5 slowest tests
     pytest_args.append('--durations=5')
+    pytest_args.append('-x')
 
     if verbosity == 2:
         pytest_args.append('-v')
