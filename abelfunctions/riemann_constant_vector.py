@@ -373,6 +373,7 @@ def RiemannConstantVector(P, epsilon1=1e-6, epsilon2=1e-8, C=None):
         The Riemann constant vector at `P`.
 
     """
+    print('-- RCV --')
     if not isinstance(P, Place):
         raise ValueError('P must be a Place of a Rieamnn surface.')
 
@@ -389,13 +390,20 @@ def RiemannConstantVector(P, epsilon1=1e-6, epsilon2=1e-8, C=None):
                              "live on the same Riemann surface."%(P,C))
     else:
         C = canonical_divisor(P.RS)
+    print('C',C)
 
     # return K0 =K(P0) if P is the base place. otherwise, perform appropriate
     # shift by the abel map
     X = P.RS
+    print('X',X)
     J = Jacobian(X)
+    print('J',J)
     g = numpy.complex(X.genus())
+    print('g',g)
     K0 = compute_K0(X, epsilon1, epsilon2, C)
+    print('K0',K0)
     if P == X.base_place:
         return K0
+    print('AbelMap(P)', AbelMap(P))
+    print('----------')
     return J(K0 + (g-1)*AbelMap(P))
