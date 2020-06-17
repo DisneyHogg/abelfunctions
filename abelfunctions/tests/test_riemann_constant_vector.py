@@ -41,6 +41,11 @@ class TestRCVTheta(AbelfunctionsTestCase):
         self.assertLess(abs(u),prec)
 
     def test_theta_X11(self):
+        print('genus', self.X11.genus())
+        print('differentials', self.X11.differentials)
+        print('C-cycles', self.X11.c_cycles())
+        print('period', self.X11.period_matrix())
+        print('Omega', self.X11.riemann_matrix())
         P0 = self.X11.base_place
         print('P0', P0)
         W0 = RiemannConstantVector(P0)
