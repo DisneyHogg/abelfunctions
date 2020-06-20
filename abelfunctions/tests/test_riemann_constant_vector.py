@@ -43,7 +43,13 @@ class TestRCVTheta(AbelfunctionsTestCase):
     def test_theta_X11(self):
         print('genus', self.X11.genus())
         print('differentials', self.X11.differentials)
-        print('C-cycles', self.X11.c_cycles())
+        print('monodromy_group',self.X11.path_factory.monodromy_group())
+        print('discriminant_points',self.X11.path_factory.discriminant_points)
+        print('base_place',self.X11.path_factory.base_place)
+        print('branch_points',self.X11.path_factory.branch_points)
+        print('a-cycles', self.X11.a_cycles())
+        print('b-cycles', self.X11.b_cycles())
+        print('c-cycles', self.X11.c_cycles())
         print('period', self.X11.period_matrix())
         print('Omega', self.X11.riemann_matrix())
         P0 = self.X11.base_place
