@@ -627,8 +627,12 @@ class YPathFactory(object):
             :py:func:`RiemannSurfacePathFactory.monodromy_group`
 
         """
+        print('--- Skeleton ---')
+        print('RS', RS)
+        print('monodromy_group', monodromy_group)
         self.RS = RS
         self.C = tretkoff_graph(monodromy_group)
+        print('self.C', self.C)
 
         # compute the a-, b-, and c-cycles by calling self.homology()
         self._a_cycles, self._b_cycles, self._c_cycles, \
@@ -773,10 +777,16 @@ class YPathFactory(object):
             Delete legacy behavior of including sheet numbers in y-paths.
 
         """
+        print('--- homology ---')
         g = int(self.RS.genus())
         edges = final_edges(self.C)
         K = intersection_matrix(edges, g)
         T = frobenius_transform(K, g)
+
+        print('g', g)
+        print('edges', edges)
+        print('K',K)
+        print('T',T)
 
         c_cycles = compute_c_cycles(self.C, edges)
         a_cycles, b_cycles = compute_ab_cycles(c_cycles, T, g, self.C)
