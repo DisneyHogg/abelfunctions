@@ -326,28 +326,40 @@ def final_edges(C):
     - list of (ordered) tuples representing the final edges
 
     """
+    print('--- final_edges ---')
+    print('C.nodes()',C.nodes())
     final_nodes = [n for n in C.nodes() if C.node[n]['final']]
+    print('final_nodes',final_nodes)
     edges = []
     while len(final_nodes) > 0:
         node = final_nodes.pop()
+        print('node',node)
         pred = list(C.neighbors(node))[0]
+        print('list(C.neighbors(node))',list(C.neighbors(node)))
+        print('pred',pred)
         pred_val = C.node[pred]['value']
+        print('pred_val',pred_val)
         other = [n for n in final_nodes if C.node[n]['value'] == pred_val and
                  C.node[list(C.neighbors(n))[0]]['value'] == C.node[node]['value']]
+        print('other', other)
         other = other[0]
 
         final_nodes.remove(other)
+        print('final_nodes',final_nodes)
 
         # order is important: the nodes with final vertices "don't
         # actually exist" in the homology graph. they're only there to
         # help determine replative ordering of cycles. We choose final
         # edges such that the predecessors of the nodes give the correct
         # ordering
+        print("C.node[node]['value']",C.node[node]['value'])
+        print("isinstance(C.node[node]['value'],tuple)", isinstance(C.node[node]['value'],tuple))
         if isinstance(C.node[node]['value'],tuple):
             edges.append((other,node))
         else:
             edges.append((node,other))
 
+    print('edges',edges)
     return edges
 
 
