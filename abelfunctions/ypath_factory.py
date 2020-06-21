@@ -184,7 +184,7 @@ def tretkoff_graph(monodromy_group):
     base_point, base_sheets, branch_points, monodromy = monodromy_group
 
     # initialize graph with base point: the zero sheet
-    C = nx.Graph()
+    C = nx.OrderedGraph()
     node = (0,)
     C.add_node(node)
     C.node[node]['value'] = 0
