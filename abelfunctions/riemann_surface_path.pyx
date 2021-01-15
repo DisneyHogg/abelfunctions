@@ -54,7 +54,7 @@ from abelfunctions.utilities import matching_permutation
 
 from sage.all import (
     QQ, QQbar, CDF, infinity, fast_callable, cached_method, cached_function)
-from sage.functions.other import real_part, imag_part
+from sage.functions.other import real_part, imag_part, sqrt
 from sage.plot.line import line
 
 from sage.ext.interpreters.wrapper_el cimport Wrapper_el
@@ -844,7 +844,7 @@ cdef class RiemannSurfacePathPuiseux(RiemannSurfacePathPrimitive):
                         target_point = QQbar(target_point)
                     except TypeError:
                         try:
-                            target_point = QQbar(QQ(real_part(target_point))+I*QQ(imag_part(target_point)))
+                            target_point = QQbar(QQ(real_part(target_point))+sqrt(-1)*QQ(imag_part(target_point)))
                         except TypeError:
                             pass
 

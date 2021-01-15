@@ -46,7 +46,7 @@ from numpy import double, complex
 
 from sage.all import (QQ, QQbar, CC, infinity, fast_callable,
                       factorial, cached_method)
-from sage.functions.other import real_part, imag_part, floor
+from sage.functions.other import real_part, imag_part, floor, sqrt
 from sage.plot.line import line
 
 
@@ -790,8 +790,8 @@ class RiemannSurfacePathPuiseux(RiemannSurfacePathPrimitive):
                         target_point = QQbar(target_point)
                     except TypeError:
                         try:
-                            target_point = QQbar(QQ(real_part(target_point))+I*QQ(imag_part(target_point)))
-                        except: TypeError:
+                            target_point = QQbar(QQ(real_part(target_point))+sqrt(-1)*QQ(imag_part(target_point)))
+                        except TypeError:
                             pass
 
         # compute and store the ordered puiseux series needed to analytically
