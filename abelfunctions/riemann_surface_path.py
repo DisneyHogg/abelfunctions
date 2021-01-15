@@ -789,7 +789,10 @@ class RiemannSurfacePathPuiseux(RiemannSurfacePathPrimitive):
                     try:
                         target_point = QQbar(target_point)
                     except TypeError:
-                        pass
+                        try:
+                            target_point = QQbar(QQ(real_part(target_point))+I*QQ(imag_part(target_point)))
+                        except: TypeError:
+                            pass
 
         # compute and store the ordered puiseux series needed to analytically
         # continue as well as the target place for parameterization purposes
